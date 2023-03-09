@@ -33,3 +33,4 @@ Tests/Persistence.Tests/obj/
 Tests/Domain.Tests/obj/
 Tests/Application.Tests/obj/
 Tests/API.Tests/obj/
+/API/appsettings.Development.json

@@ -1,4 +1,5 @@
 ﻿using Domain.DomainEntities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -14,6 +15,7 @@ namespace API.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpGet(Name = "Get")]
         public string Get()
         {
