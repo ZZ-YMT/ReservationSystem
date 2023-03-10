@@ -1,4 +1,6 @@
 
+using API.Extensions;
+using API.Middlewares;
 using Application;
 using Infrastructure;
 using Infrastructure.Identity.Contexts;
@@ -27,8 +29,8 @@ namespace API
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddEndpointsApiExplorer();            
+            builder.Services.AddSwaggerExtension();
 
 
             builder.Services.AddCors(opt =>
@@ -47,13 +49,13 @@ namespace API
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerExtension();
             }
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            app.UseMiddleware<ApiKeyMiddleware>();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
